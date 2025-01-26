@@ -38,7 +38,7 @@ First, set your Google API key:
 1. Create a `.env.local` file in the root of your project.
 2. Add your Google API key to the file:
    ```
-   NEXT_PUBLIC_GOOGLE_API_KEY=your_google_api_key_here
+   NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_google_api_key_here
    ```
 
 Next, run the development server:
