@@ -48,37 +48,28 @@ app
 ## Cloud Architecture Diagram
 
 ```mermaid
-graph TB
-    subgraph "Client Side"
-        B[Web Browser]
+graph LR
+    subgraph "User"
+        Browser[Web Browser]
     end
 
     subgraph "Cloud CDN Hosting"
-        N[Next.js Application]
+        App[Next.js App]
     end
 
     subgraph "External Services"
-        G[Google Places API]
-        GM[Google Maps API]
+        Google[Google Maps & Places APIs]
+        NYC[NYC Mental Health Services API]
     end
 
-    subgraph "Environment Configuration"
-        E[.env.local]
-        API[Google API Keys]
-    end
+    Browser <--> App
+    App <--> Google
+    App <--> NYC
 
-    B <--> N
-    N <--> G
-    N <--> GM
-    E --> N
-    API --> E
-
-    style N fill:#4c51bf,color:#fff
-    style G fill:#34a853,color:#fff
-    style GM fill:#4285f4,color:#fff
-    style B fill:#f6f6f6
-    style E fill:#718096,color:#fff
-    style API fill:#718096,color:#fff
+    style Browser fill:#f6f6f6
+    style App fill:#4c51bf,color:#fff
+    style Google fill:#34a853,color:#fff
+    style NYC fill:#ff6b6b,color:#fff
 ```
 
 ## Learn More
