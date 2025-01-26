@@ -22,23 +22,21 @@ export default function Home() {
   );
 
   useEffect(() => {
-    const updateLocations = () => {
-      const filteredData = selectedCity
-        ? data?.filter((service) => service.city === selectedCity)
-        : data;
+    if (!data) return;
 
-      const newLocations = filteredData
-        ?.map((service) => {
-          const lat = parseFloat(service.latitude);
-          const lng = parseFloat(service.longitude);
-          return !isNaN(lat) && !isNaN(lng) ? { lat, lng } : null;
-        })
-        .filter(Boolean);
+    const filteredData = selectedCity
+      ? data.filter((service) => service.city === selectedCity)
+      : data;
 
-      setLocations(newLocations?.filter((location) => location !== null) || []);
-    };
+    const newLocations = filteredData
+      .map((service) => {
+        const lat = parseFloat(service.latitude);
+        const lng = parseFloat(service.longitude);
+        return !isNaN(lat) && !isNaN(lng) ? { lat, lng } : null;
+      })
+      .filter(Boolean);
 
-    updateLocations();
+    setLocations(newLocations as { lat: number; lng: number }[]);
   }, [selectedCity, data]);
 
   if (isLoading) return <div>Loading...</div>;
