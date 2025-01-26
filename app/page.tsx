@@ -14,6 +14,17 @@ interface Service {
   city: string;
 }
 
+const center = [
+  {
+    lat: 40.75061,
+    lng: -73.945233,
+  },
+  {
+    lat: 40.835269103,
+    lng: -73.9402930483999,
+  },
+];
+
 export default function Home() {
   const [selectedCity, setSelectedCity] = useState("");
   const { data, error, isLoading } = useSWR<Service[]>(
@@ -30,6 +41,8 @@ export default function Home() {
   const filteredServices = selectedCity
     ? data?.filter((service) => service.city === selectedCity)
     : data;
+
+  console.log(filteredServices);
 
   return (
     <>
@@ -64,7 +77,7 @@ export default function Home() {
             </div>
           </div>
           <div className="w-2/3">
-            <GoogleMapComponent />
+            <GoogleMapComponent locations={center} />
           </div>
         </div>
       </main>
