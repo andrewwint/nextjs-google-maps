@@ -2,7 +2,7 @@
 
 This project is a mental health service finder that uses the Google Places API to search for mental health services near a user's location. The user can enter a location and a search term to find mental health services near them. The user can also click on a service to view more details about the service.
 
-![Demo Gif](demo.gif)
+![Demo Gif](demo-address-update.gif)
 
 ## Cloud Architecture Diagram
 
