@@ -75,6 +75,7 @@ Here are some potential future improvements to scale this application:
 1. **Data Pipeline**: Develop a robust data pipeline to ingest, clean, validate, and enrich mental health service data:
 
    - Cleaning and standardizing data formats for consistent display.
+   - Pre-calculate zoom and center values for groups of pins, simplifying the front-end development experience and user experience.
    - Separating phone numbers with extension numbers into new fields for proper display.
    - Validating addresses to ensure accuracy.
    - Adding hours of operation and alternate phone numbers using the Google Places API.
