@@ -2,21 +2,13 @@
 import useSWR from "swr";
 import { v4 as uuidv4 } from "uuid";
 import { useState, useEffect } from "react";
-import GoogleMapComponent from "./components/google-map";
+import {
+  GoogleMapComponent,
+  ServiceResultProps,
+  ServiceResult,
+} from "./components";
 
 const fetcher = (url: string) => fetch(url).then((r) => r.json());
-
-interface Service {
-  latitude: string;
-  longitude: string;
-  name_1: string;
-  name_2: string;
-  street_1: string;
-  zip: string;
-  phone: string;
-  website: string;
-  city: string;
-}
 
 export default function Home() {
   const [selectedCity, setSelectedCity] = useState("");
@@ -24,7 +16,7 @@ export default function Home() {
     { lat: 40.75061, lng: -73.945233 },
   ]);
 
-  const { data, error, isLoading } = useSWR<Service[]>(
+  const { data, error, isLoading } = useSWR<ServiceResultProps[]>(
     "https://data.cityofnewyork.us/resource/8nqg-ia7v.json",
     fetcher
   );
@@ -86,12 +78,7 @@ export default function Home() {
                 <ul>
                   {filteredServices?.map((service) => (
                     <li key={uuidv4()}>
-                      {service.name_1} <br />
-                      {service.name_2} <br />
-                      {service.street_1} <br />
-                      {service.zip} <br />
-                      {service.phone} <br />
-                      {service.website} <br />
+                      <ServiceResult {...service} />
                     </li>
                   ))}
                 </ul>

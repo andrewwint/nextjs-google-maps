@@ -14,16 +14,18 @@ const center = {
 
 interface GoogleMapComponentProps {
   locations: { lat: number; lng: number }[];
+  zoom?: number;
 }
 
 const GoogleMapComponent: React.FC<GoogleMapComponentProps> = ({
   locations,
+  zoom = 11,
 }) => {
   return (
     <LoadScript
       googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ""}
     >
-      <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={11}>
+      <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={zoom}>
         {locations.map((location, index) => (
           <Marker key={index} position={location} />
         ))}
