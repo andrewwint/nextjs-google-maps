@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mental Health Service Finder
+
+This project is a mental health service finder that uses the Google Places API to search for mental health services near a user's location. The user can enter a location and a search term to find mental health services near them. The user can also click on a service to view more details about the service.
 
 ![Demo Gif](demo.gif)
 
@@ -45,7 +47,39 @@ app
 
 ## Cloud Architecture Diagram
 
-![Cloud Architecture Diagram](path_to_your_diagram.png)
+```mermaid
+graph TB
+    subgraph "Client Side"
+        B[Web Browser]
+    end
+
+    subgraph "Cloud CDN Hosting"
+        N[Next.js Application]
+    end
+
+    subgraph "External Services"
+        G[Google Places API]
+        GM[Google Maps API]
+    end
+
+    subgraph "Environment Configuration"
+        E[.env.local]
+        API[Google API Keys]
+    end
+
+    B <--> N
+    N <--> G
+    N <--> GM
+    E --> N
+    API --> E
+
+    style N fill:#4c51bf,color:#fff
+    style G fill:#34a853,color:#fff
+    style GM fill:#4285f4,color:#fff
+    style B fill:#f6f6f6
+    style E fill:#718096,color:#fff
+    style API fill:#718096,color:#fff
+```
 
 ## Learn More
 
