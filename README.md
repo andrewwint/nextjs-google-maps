@@ -4,6 +4,33 @@ This project is a mental health service finder that uses the Google Places API t
 
 ![Demo Gif](demo.gif)
 
+## Cloud Architecture Diagram
+
+```mermaid
+graph LR
+    subgraph "User"
+        Browser[Web Browser]
+    end
+
+    subgraph "Cloud CDN Hosting"
+        App[Next.js App]
+    end
+
+    subgraph "External Services"
+        Google[Google Maps & Places APIs]
+        NYC[NYC Mental Health Services API]
+    end
+
+    Browser <--> App
+    App <--> Google
+    App <--> NYC
+
+    style Browser fill:#f6f6f6
+    style App fill:#4c51bf,color:#fff
+    style Google fill:#34a853,color:#fff
+    style NYC fill:#ff6b6b,color:#fff
+```
+
 ## Getting Started
 
 First, set your Google API key:
@@ -43,33 +70,6 @@ app
 │   └── [shared-components].tsx   # Shared layout component
 ├── layout.tsx                    # Main layout component
 └── page.tsx                      # Main page component
-```
-
-## Cloud Architecture Diagram
-
-```mermaid
-graph LR
-    subgraph "User"
-        Browser[Web Browser]
-    end
-
-    subgraph "Cloud CDN Hosting"
-        App[Next.js App]
-    end
-
-    subgraph "External Services"
-        Google[Google Maps & Places APIs]
-        NYC[NYC Mental Health Services API]
-    end
-
-    Browser <--> App
-    App <--> Google
-    App <--> NYC
-
-    style Browser fill:#f6f6f6
-    style App fill:#4c51bf,color:#fff
-    style Google fill:#34a853,color:#fff
-    style NYC fill:#ff6b6b,color:#fff
 ```
 
 ## Learn More
