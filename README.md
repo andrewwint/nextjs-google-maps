@@ -76,12 +76,12 @@ app
 
 Here are some potential future improvements to scale this application:
 
-1. **Data Pipeline Setup**: Set up a data pipeline to ingest, clean, validate, and enrich the mental health service data. This ensures the data is accurate, up-to-date, and relevant for users. For example, phone numbers, addresses, and hours of operation can be validated and enriched with additional information using Google Places API.
+1. **Data Pipeline**: Having a data pipeline to ingest, clean, validate, and enrich the mental health service data. This ensures the data is accurate, up-to-date, and relevant for users. For example, phone numbers, addresses, and hours of operation can be validated and enriched with additional information using Google Places API.
 
 2. **Proxying Requests and Caching**:
 
-- Implement a proxy server to handle requests to external APIs. This can help manage rate limits, improve security, and provide a single point of access for external data.
-- Introduce caching mechanisms to store frequently accessed data to reduce load on external APIs and improve the application's response times.
+- **Implement a proxy server** to handle requests to external APIs. This can help manage rate limits, improve security, and provide a single point of access for external data.
+- **Caching mechanisms** to store frequently accessed data to reduce load on external APIs and improve the application's response times.
 
 3. **Monitoring and Logging**: Implement comprehensive monitoring and logging to track the application's performance, detect issues early, and ensure smooth operation. Use tools like Prometheus, Grafana, and ELK stack to monitor metrics, logs, and traces. Creation of runbooks and alerts for critical issues.
 
