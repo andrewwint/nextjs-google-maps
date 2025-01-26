@@ -1,7 +1,7 @@
 "use client";
 import useSWR from "swr";
 import { v4 as uuidv4 } from "uuid";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import GoogleMapComponent from "./components/google-map";
 
 const fetcher = (url: string) => fetch(url).then((r) => r.json());
@@ -11,26 +11,43 @@ interface Service {
   longitude: string;
   name_1: string;
   name_2: string;
+  street_1: string;
+  zip: string;
+  phone: string;
+  website: string;
   city: string;
 }
 
-const center = [
-  {
-    lat: 40.75061,
-    lng: -73.945233,
-  },
-  {
-    lat: 40.835269103,
-    lng: -73.9402930483999,
-  },
-];
-
 export default function Home() {
   const [selectedCity, setSelectedCity] = useState("");
+  const [locations, setLocations] = useState([
+    { lat: 40.75061, lng: -73.945233 },
+  ]);
+
   const { data, error, isLoading } = useSWR<Service[]>(
     "https://data.cityofnewyork.us/resource/8nqg-ia7v.json",
     fetcher
   );
+
+  useEffect(() => {
+    const updateLocations = () => {
+      const filteredData = selectedCity
+        ? data?.filter((service) => service.city === selectedCity)
+        : data;
+
+      const newLocations = filteredData
+        ?.map((service) => {
+          const lat = parseFloat(service.latitude);
+          const lng = parseFloat(service.longitude);
+          return !isNaN(lat) && !isNaN(lng) ? { lat, lng } : null;
+        })
+        .filter(Boolean);
+
+      setLocations(newLocations?.filter((location) => location !== null) || []);
+    };
+
+    updateLocations();
+  }, [selectedCity, data]);
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
@@ -41,8 +58,6 @@ export default function Home() {
   const filteredServices = selectedCity
     ? data?.filter((service) => service.city === selectedCity)
     : data;
-
-  console.log(filteredServices);
 
   return (
     <>
@@ -70,14 +85,21 @@ export default function Home() {
                 Find mental health services in {selectedCity || "all cities"}.
                 <ul>
                   {filteredServices?.map((service) => (
-                    <li key={uuidv4()}>{service.name_2}</li>
+                    <li key={uuidv4()}>
+                      {service.name_1} <br />
+                      {service.name_2} <br />
+                      {service.street_1} <br />
+                      {service.zip} <br />
+                      {service.phone} <br />
+                      {service.website} <br />
+                    </li>
                   ))}
                 </ul>
               </div>
             </div>
           </div>
           <div className="w-2/3">
-            <GoogleMapComponent locations={center} />
+            <GoogleMapComponent locations={locations} />
           </div>
         </div>
       </main>
