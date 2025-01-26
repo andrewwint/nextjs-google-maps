@@ -84,4 +84,4 @@ Here are some potential future improvements to scale this application:
    - **Implement a proxy server** to handle requests to external APIs. This can help manage rate limits, improve security, and provide a single point of access for external data.
    - **Caching mechanisms** to store frequently accessed data to reduce load on external APIs and improve the application's response times.
 
-3. **Monitoring and Logging**: Implement comprehensive monitoring and logging to track the application's performance, detect issues early, and ensure smooth operation. Use tools like Prometheus, Grafana, and the ELK stack to monitor metrics, logs, and traces. Create runbooks and set up alerts for critical issues to ensure timely responses and resolution.
+3. **Monitoring and Logging**: Implement monitoring and logging to track the application's performance and detect issues early. Create runbooks and playbooks, along with configured alerts and notifications to promptly inform engineers of issues for quick response and resolution.
