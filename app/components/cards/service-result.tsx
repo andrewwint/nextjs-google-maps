@@ -25,9 +25,9 @@ export default function ServiceResult(service: ServiceResultProps) {
         )}
         <address className="not-italic mb-2">
           <div>{service.street_1}</div>
-          <div>
-            {service.zip} {service.city}
-          </div>
+          {/* <div>
+            {service.city}, NY, {service.zip}
+          </div> */}
         </address>
         <div>
           <div className="-mt-px flex divide-x divide-gray-200">
