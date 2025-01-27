@@ -6,6 +6,7 @@ export interface ServiceResultProps {
   name_1: string;
   name_2: string;
   street_1: string;
+  street_2: string;
   zip: string;
   phone: string;
   website: string;
@@ -24,7 +25,11 @@ export default function ServiceResult(service: ServiceResultProps) {
           </div>
         )}
         <address className="not-italic mb-2">
-          <div>{service.street_1}</div>
+          <div>
+            {service.street_1}
+            {service.street_2 ? <span> {service.street_2}, </span> : ", "}
+            {service.city}{" "}
+          </div>
           {/* <div>
             {service.city}, NY, {service.zip}
           </div> */}
@@ -47,7 +52,7 @@ export default function ServiceResult(service: ServiceResultProps) {
             <div className="-ml-px flex w-0 flex-1">
               {service.website ? (
                 <a
-                  href={`tel:${service.website}`}
+                  href={`${service.website}`}
                   className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border border-transparent py-4 text-sm font-semibold text-gray-900"
                 >
                   <LinkIcon
