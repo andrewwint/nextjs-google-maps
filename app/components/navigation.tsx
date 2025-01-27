@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Disclosure, DisclosureButton } from "@headlessui/react";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
@@ -9,12 +10,12 @@ export default function Navigation() {
         <div className="flex h-24 justify-between">
           <div className="flex px-2 lg:px-0">
             <div className="flex shrink-0 items-center">
-              <img
+              <Image
                 src="https://cdn.prod.website-files.com/63af45253593731bba3388ec/644d7e6343b5560955358908_ProjectHealthyMinds_Logos_New_Black_Stacked.png"
-                width="93"
+                width={93}
+                height={93}
                 sizes="(max-width: 767px) 92.98828125px, (max-width: 991px) 12vw, (max-width: 1439px) 8vw, 92.98828125px"
-                srcSet="https://cdn.prod.website-files.com/63af45253593731bba3388ec/644d7e6343b5560955358908_ProjectHealthyMinds_Logos_New_Black_Stacked-p-500.png 500w, https://cdn.prod.website-files.com/63af45253593731bba3388ec/644d7e6343b5560955358908_ProjectHealthyMinds_Logos_New_Black_Stacked-p-800.png 800w, https://cdn.prod.website-files.com/63af45253593731bba3388ec/644d7e6343b5560955358908_ProjectHealthyMinds_Logos_New_Black_Stacked-p-1080.png 1080w, https://cdn.prod.website-files.com/63af45253593731bba3388ec/644d7e6343b5560955358908_ProjectHealthyMinds_Logos_New_Black_Stacked-p-1600.png 1600w, https://cdn.prod.website-files.com/63af45253593731bba3388ec/644d7e6343b5560955358908_ProjectHealthyMinds_Logos_New_Black_Stacked.png 2084w"
-                alt=""
+                alt="Project Healthy Minds Logo"
                 className="logo-image"
               />
             </div>
